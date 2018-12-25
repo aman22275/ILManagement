@@ -18,7 +18,6 @@ namespace LibraryServices
         {
             _context.Add(newAsset);
             _context.SaveChanges();
-           
         }
 
         public IEnumerable<LibraryAsset> GetAll()

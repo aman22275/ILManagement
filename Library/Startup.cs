@@ -43,7 +43,7 @@ namespace Library
 
             //Register services.
             services.AddScoped<ILibraryAsset, LibraryAssetService>();
-
+            services.AddScoped<ICheckOut, CheckoutService>();
 
         }
 

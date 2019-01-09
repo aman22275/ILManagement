@@ -72,7 +72,7 @@ namespace LibraryServices
             _context.Update(item);
 
             item.Status = _context.Statuses
-                .FirstOrDefault(status => status.Name == 'Available');
+                .FirstOrDefault(status => status.Name == "Available");
 
             //remove any existing checkouts on the item.
             var checkout = _context.Checkouts
@@ -105,7 +105,7 @@ namespace LibraryServices
             _context.Update(item);
 
             item.Status = _context.Statuses
-                .FirstOrDefault(status => status.Name == 'Lost');
+                .FirstOrDefault(status => status.Name == "Lost");
 
             _context.SaveChanges();
         }

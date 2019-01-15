@@ -11,9 +11,10 @@ namespace Library.Controllers
     public class CatalogController : Controller
     {
         public ILibraryAsset _assets;
-
-       public CatalogController(ILibraryAsset assets)
+        public ICheckOut _checkouts;
+       public CatalogController(ILibraryAsset assets, ICheckOut checkouts)
         {
+            _checkouts = checkouts;
             _assets = assets;
         }
 
@@ -42,6 +43,7 @@ namespace Library.Controllers
         public IActionResult Detail(int id)
         {
             var asset = _assets.GetById(id);
+
             var model = new AssetDetailModel
             {
                 AssetId = id,
@@ -53,7 +55,12 @@ namespace Library.Controllers
                 AuthorOrDirector = _assets.GetAuthorOrDirector(id),
                 CurrentLocation = _assets.GetCurrentLocation(id).Name,
                 DeweyCallNumber = _assets.GetDeweyIndex(id),
-                ISBN = _assets.GetIsbn(id)
+                ISBN = _assets.GetIsbn(id),
+                CheckoutHistory = _checkouts.GetCheckoutHistory(id),
+                LatestCheckout = _checkouts.GetLatestCheckout(id),
+                PatronName = _checkouts.GetCurrentHoldPatronName(id),
+
+
             };
 
             return View(model);

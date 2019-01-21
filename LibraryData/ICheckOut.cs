@@ -13,7 +13,7 @@ namespace LibraryData
         void CheckOutItem(int assetId, int libraryCardId);
         void CheckInItem(int assetId, int libraryCardId);
         IEnumerable<CheckoutHistory> GetCheckoutHistory(int id);
-
+        bool IsCheckedOut(int id);
         void PlaceHold(int assetId, int libraryCardId);
         string GetCurrentHoldPatronName(int id);
         DateTime GetCurrentHoldPlaced(int id);

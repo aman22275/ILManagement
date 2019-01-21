@@ -1,4 +1,5 @@
-﻿@model Library.Models.Catalog.AssetDetailModel
+﻿@using Library.Models.Catalog
+@model Library.Models.Catalog.AssetDetailModel
 @{
     ViewData["Title"] = "Detail";
 }
@@ -8,7 +9,7 @@
 <div class="container">
     <div class="page-header clearfix detailHeading">
         <h2 class="text-muted">View Library Items</h2>
-    </div>  
+    </div>
 </div>
 
 <div class="jumbotron">
@@ -75,3 +76,34 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-6">
+        <h4>Checkout History</h4>
+        <table class="table table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th>Date Loaned</th>
+                    <th>Date Returned</th>
+                    <th>Card Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var checkout in Model.CheckoutHistory)
+                {
+                    <tr>
+                        <td>
+                            @checkout.CheckedOut;
+                        </td>
+                        <td>
+                            @checkout.CheckedIn
+                        </td>
+                        <td>
+                            @checkout.LibraryCard.Id
+                        </td>
+                    </tr>
+                }
+            </tbody>foreach
+        </table>
+
+    </div>
+</div>
